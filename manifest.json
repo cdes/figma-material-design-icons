@@ -1,7 +1,7 @@
 {
-  "name": "Material Design Icons",
-  "id": "k8BSGl3m75pOKZ8Ot2Vs6B",
-  "version": "0.5.0",
-  "html": "dist/ui.html",
-  "script": "dist/code.js"
+  "name": "Material Design Icons (Community)",
+  "id": "775671607185029020",
+  "api": "1.0.0",
+  "ui": "build/ui.html",
+  "main": "build/main.js"
 }
