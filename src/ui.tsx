@@ -1,26 +1,17 @@
-import { Global, jsx } from '@emotion/core'
-import React, { useEffect, useState } from 'react'
+import { Global, jsx } from '@emotion/core';
+import { useState } from 'react';
 import ReactDOM from 'react-dom';
-import IconButton from './components/icon-button'
-import SearchInput from './components/search-input'
-import theme from './theme'
-import './ui.css'
-import useSearch from './use-search'
+import IconButton from './components/icon-button';
+import SearchInput from './components/search-input';
+import theme from './theme';
+import './ui.css';
+import useSearch from './use-search';
 import { FixedSizeGrid as Grid } from 'react-window';
-
-function splitArray(array, part) {
-  const tmp = [];
-  for(let i = 0; i < array.length; i += part) {
-      tmp.push(array.slice(i, i + part));
-  }
-  return tmp;
-}
 
 function App() {
   const [query, setQuery] = useState('');
 
   const results = useSearch(query);
-  const results2d = splitArray(results, 6);  
 
   return (
     <div>
@@ -37,19 +28,21 @@ function App() {
         }}
       />
       <div css={{ padding: theme.space[2] }}>
-      <Grid
-        columnCount={6}
-        rowCount={Math.round(results.length/6)}
-        columnWidth={47}
-        height={343}
-        rowHeight={47}
-        width={284}
-      >
-        {({ columnIndex, rowIndex }) => (
-          typeof results2d[columnIndex][rowIndex] !== "undefined" ? <IconButton name={results2d[columnIndex][rowIndex].name} /> : <div></div>
-          // <pre>{JSON.stringify(results2d[columnIndex][rowIndex])}</pre>
-        )}
-      </Grid>
+        <Grid
+          columnCount={5}
+          rowCount={Math.round(results.length)}
+          columnWidth={284 / 5}
+          rowHeight={284 / 5}
+          width={284}
+          height={351}
+        >
+          {({ columnIndex, rowIndex, style }) => {
+            const icon = results[rowIndex][columnIndex];
+            return icon === undefined ? null : (
+              <IconButton name={icon.name} style={style} />
+            );
+          }}
+        </Grid>
         {/* <div
           css={{
             display: 'grid',
@@ -72,7 +65,7 @@ function App() {
         </div> */}
       </div>
     </div>
-  )
+  );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));

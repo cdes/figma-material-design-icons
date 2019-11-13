@@ -1,13 +1,14 @@
-import { jsx } from '@emotion/core'
-import theme from '../theme'
-import SearchIcon from './search-icon'
-import icons from "@mdi/svg/meta.json";
+import { jsx } from '@emotion/core';
+import theme from '../theme';
+import SearchIcon from './search-icon';
+import icons from '@mdi/svg/meta.json';
+import { useDebounce } from 'react-use';
 
-const ICON_COUNT = icons.length
+const ICON_COUNT = icons.length;
 
 interface SearchInputProps extends React.HTMLProps<HTMLDivElement> {
-  value: string
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  value: string;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function SearchInput({ value, onChange, ...props }: SearchInputProps) {
@@ -18,7 +19,7 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
           position: 'absolute',
           top: 0,
           left: 0,
-          padding: theme.space[1],
+          padding: theme.space[2],
         }}
       >
         <SearchIcon css={{ fill: '#333' }} />
@@ -40,7 +41,7 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
         }}
       />
     </div>
-  )
+  );
 }
 
-export default SearchInput
+export default SearchInput;

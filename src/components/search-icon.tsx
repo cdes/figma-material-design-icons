@@ -1,18 +1,11 @@
-import { jsx } from '@emotion/core'
+import { jsx } from '@emotion/core';
 
 function SearchIcon(props: React.HTMLProps<SVGSVGElement>) {
   return (
-    <svg
-      viewBox="0 0 32 32"
-      width={32}
-      height={32}
-      clipRule="evenodd"
-      fillRule="evenodd"
-      {...props}
-    >
-      <path d="m20 15c0 2.7614-2.2386 5-5 5s-5-2.2386-5-5 2.2386-5 5-5 5 2.2386 5 5zm-1.1256 4.5815c-1.0453.8849-2.3975 1.4185-3.8744 1.4185-3.3137 0-6-2.6863-6-6s2.6863-6 6-6 6 2.6863 6 6c0 1.4769-.5336 2.8291-1.4185 3.8744l4.2721 4.272-.7072.7072z" />
+    <svg viewBox="0 0 24 24" width={24} height={24} {...props}>
+      <path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
     </svg>
-  )
+  );
 }
 
-export default SearchIcon
+export default SearchIcon;
