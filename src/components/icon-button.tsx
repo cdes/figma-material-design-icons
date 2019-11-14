@@ -1,20 +1,22 @@
 import { jsx } from '@emotion/core';
 import theme from '../theme';
 import { memo } from 'react';
+import { html as io } from '../io';
 
 interface IconButtonProps {
   name: string;
+  version: string;
   style: object;
 }
 
 async function sendIcon(name, url) {
   const response = await fetch(url);
   const icon = await response.text();
-  parent.postMessage({ pluginMessage: { icon, name } }, '*');
+  io.send('add-icon', { icon, name });
 }
 
-function IconButton({ name, style }: IconButtonProps) {
-  const url = `https://cdn.jsdelivr.net/npm/@mdi/svg@4.5.95/svg/${name}.svg`;
+function IconButton({ name, style, version }: IconButtonProps) {
+  const url = `https://cdn.jsdelivr.net/npm/@mdi/svg@${version}/svg/${name}.svg`;
 
   return (
     <button

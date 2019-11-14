@@ -1,5 +1,6 @@
 import Fuse from 'fuse.js';
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
+import IconsContext from './icons-context';
 
 function splitArray(array, part) {
   const tmp = [];
@@ -9,28 +10,10 @@ function splitArray(array, part) {
   return tmp;
 }
 
-function useSearch(query: string) {
-  const [results, setResults] = React.useState([]);
+function useSearch(query: string, meta) {
+  const [results, setResults] = React.useState(meta);
 
-  useEffect(() => {
-    (async () => {
-      const mdiResponse = await fetch(
-        `https://cdn.jsdelivr.net/npm/@mdi/svg@4.5.95/meta.json`
-      );
-      const text = await mdiResponse.text();
-      const mdiJson = JSON.parse(text);
-
-      const json = mdiJson.map(({ name, tag, aliases }) => ({
-        name,
-        tag,
-        aliases,
-      }));
-
-      setResults(json);
-    })();
-  }, []);
-
-  const fuse = new Fuse(results, {
+  const fuse = new Fuse(meta, {
     threshold: 0.2,
     keys: ['name', 'tags', 'aliases'],
   });
@@ -39,7 +22,7 @@ function useSearch(query: string) {
     if (query.trim()) {
       setResults(fuse.search(query.trim()));
     } else {
-      setResults(results);
+      setResults(meta);
     }
   }, [query]);
 

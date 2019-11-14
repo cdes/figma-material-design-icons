@@ -4,10 +4,11 @@ import SearchIcon from './search-icon';
 
 interface SearchInputProps extends React.HTMLProps<HTMLDivElement> {
   value: string;
+  count: number;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function SearchInput({ value, onChange, ...props }: SearchInputProps) {
+function SearchInput({ value, onChange, count, ...props }: SearchInputProps) {
   return (
     <div css={{ position: 'relative' }} {...props}>
       <div
@@ -25,7 +26,7 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
         type="search"
         value={value}
         onChange={onChange}
-        placeholder={`Search 4595 icons...`}
+        placeholder={`Search ${count} icons...`}
         css={{
           width: '100%',
           height: 40,
