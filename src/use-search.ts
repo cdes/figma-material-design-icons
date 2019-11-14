@@ -1,6 +1,5 @@
 import Fuse from 'fuse.js';
-import React, { useContext } from 'react';
-import IconsContext from './icons-context';
+import React from 'react';
 
 function splitArray(array, part) {
   const tmp = [];
