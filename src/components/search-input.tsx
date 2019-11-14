@@ -1,10 +1,6 @@
 import { jsx } from '@emotion/core';
 import theme from '../theme';
 import SearchIcon from './search-icon';
-import icons from '@mdi/svg/meta.json';
-import { useDebounce } from 'react-use';
-
-const ICON_COUNT = icons.length;
 
 interface SearchInputProps extends React.HTMLProps<HTMLDivElement> {
   value: string;
@@ -29,7 +25,7 @@ function SearchInput({ value, onChange, ...props }: SearchInputProps) {
         type="search"
         value={value}
         onChange={onChange}
-        placeholder={`Search ${ICON_COUNT} icons`}
+        placeholder={`Search 4595 icons...`}
         css={{
           width: '100%',
           height: 40,

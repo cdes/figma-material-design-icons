@@ -1,5 +1,5 @@
 import { Global, jsx } from '@emotion/core';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import IconButton from './components/icon-button';
 import SearchInput from './components/search-input';
@@ -43,26 +43,6 @@ function App() {
             );
           }}
         </Grid>
-        {/* <div
-          css={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(6, 1fr)',
-            gridGap: theme.space[1],
-          }}
-        >
-          {results.map(icon => (
-            <IconButton key={icon.id} name={icon.name} />
-          ))}
-        </div>
-        <div
-          css={{
-            marginTop: theme.space[2],
-            padding: theme.space[2],
-            fontSize: theme.fontSizes[0],
-            color: 'rgba(0, 0, 0, 0.5)',
-          }}
-        >
-        </div> */}
       </div>
     </div>
   );

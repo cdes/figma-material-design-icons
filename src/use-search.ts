@@ -1,7 +1,5 @@
 import Fuse from 'fuse.js';
-import React from 'react';
-import icons from '@mdi/svg/meta.json';
-import { useDebounce } from 'react-use';
+import React, { useEffect } from 'react';
 
 function splitArray(array, part) {
   const tmp = [];
@@ -13,30 +11,37 @@ function splitArray(array, part) {
 
 function useSearch(query: string) {
   const [results, setResults] = React.useState([]);
-  const [debouncedValue, setDebouncedValue] = React.useState('');
 
-  const [, cancel] = useDebounce(
-    () => {
-      setDebouncedValue(query);
-    },
-    1000,
-    [query]
-  );
+  useEffect(() => {
+    (async () => {
+      const mdiResponse = await fetch(
+        `https://cdn.jsdelivr.net/npm/@mdi/svg@4.5.95/meta.json`
+      );
+      const text = await mdiResponse.text();
+      const mdiJson = JSON.parse(text);
 
-  const fuse = new Fuse(icons, {
+      const json = mdiJson.map(({ name, tag, aliases }) => ({
+        name,
+        tag,
+        aliases,
+      }));
+
+      setResults(json);
+    })();
+  }, []);
+
+  const fuse = new Fuse(results, {
     threshold: 0.2,
     keys: ['name', 'tags', 'aliases'],
   });
 
   React.useEffect(() => {
-    console.log(debouncedValue);
-
-    if (debouncedValue.trim()) {
-      setResults(fuse.search(debouncedValue.trim()));
+    if (query.trim()) {
+      setResults(fuse.search(query.trim()));
     } else {
-      setResults(icons);
+      setResults(results);
     }
-  }, [debouncedValue]);
+  }, [query]);
 
   return splitArray(results, 5);
 }
