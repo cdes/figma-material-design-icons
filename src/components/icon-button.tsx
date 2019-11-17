@@ -30,7 +30,9 @@ function IconButton({ name, style, version }: IconButtonProps) {
         border: 0,
         borderRadius: theme.radii[1],
         appearance: 'none',
+        fontSize: '24px',
         outline: 0,
+        animation: 'fadeIn 200ms ease-in-out',
         '&:hover': {
           background: 'rgba(0, 0, 0, 0.06)',
         },
@@ -40,7 +42,7 @@ function IconButton({ name, style, version }: IconButtonProps) {
         ...style,
       }}
     >
-      <img src={url} width={24} height={24} />
+      <i className={`mdi mdi-${name}`}></i>
     </button>
   );
 }
