@@ -3,5 +3,13 @@
   "id": "775671607185029020",
   "api": "1.0.0",
   "ui": "build/ui.html",
-  "main": "build/main.js"
+  "main": "build/main.js",
+  "editorType": ["figma"],
+  "networkAccess": {
+    "allowedDomains": [
+      "https://*.jsdelivr.net",
+      "https://*.jsdelivr.com",
+      "https://rsms.me"
+    ]
+  }
 }
