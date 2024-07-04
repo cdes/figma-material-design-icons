@@ -16,3 +16,36 @@
     opacity: 1;
   }
 }
+
+i.mdi {
+  color: #333;
+}
+
+.figma-dark i.mdi {
+  color: #f0f0f0;
+}
+
+.search-icon {
+  fill: #333;
+}
+
+.figma-dark .search-input {
+  background: transparent;
+  color: #fff;
+}
+
+.search-input-container {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.figma-dark .search-input-container {
+  border-bottom: 1px solid rgb(68, 68, 68);
+}
+
+.search-input {
+  background: transparent;
+}
+
+.figma-dark .search-icon {
+  fill: #bfbfbf;
+}

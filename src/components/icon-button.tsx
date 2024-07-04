@@ -25,7 +25,6 @@ function IconButton({ name, style, version }: IconButtonProps) {
       onClick={() => sendIcon(name, url)}
       css={{
         padding: theme.space[2],
-        color: '#333',
         background: 'transparent',
         border: 0,
         borderRadius: theme.radii[1],

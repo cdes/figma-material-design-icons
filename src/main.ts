@@ -1,6 +1,6 @@
 import { script as io } from './io';
 
-figma.showUI(__html__, { width: 300, height: 400 });
+figma.showUI(__html__, { width: 300, height: 400, themeColors: true });
 
 io.on('add-icon', data => {
   const icon = figma.createNodeFromSvg(data.icon);

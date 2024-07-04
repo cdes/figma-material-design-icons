@@ -71,6 +71,7 @@ function App() {
           <Global
             styles={{ body: { margin: 0, fontFamily: 'Inter, sans-serif' } }}
           />
+          <style>{`.figma-dark { color: #fff }`}</style>
           Loading
         </div>
       ) : (
@@ -96,9 +97,9 @@ function App() {
             css={{
               position: 'sticky',
               top: 0,
-              borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
             }}
             count={meta.length}
+            className="search-input-container"
           />
           <div css={{ padding: theme.space[2], paddingBottom: 0 }}>
             <Grid

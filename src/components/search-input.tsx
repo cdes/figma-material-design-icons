@@ -19,7 +19,7 @@ function SearchInput({ value, onChange, count, ...props }: SearchInputProps) {
           padding: theme.space[2],
         }}
       >
-        <SearchIcon css={{ fill: '#333' }} />
+        <SearchIcon className="search-icon" />
       </div>
       <input
         autoFocus
@@ -36,6 +36,7 @@ function SearchInput({ value, onChange, count, ...props }: SearchInputProps) {
           border: 0,
           outline: 0,
         }}
+        className="search-input"
       />
     </div>
   );
